@@ -1,0 +1,16 @@
+{
+  "name": "fekey-packager-smart",
+  "version": "1.0.1",
+  "description": "smart package of widget",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wmfe/fekey-packager-smart.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/wmfe/fekey-packager-smart",
+  "author": "xumingjie_iwm",
+  "license": "ISC"
+}
