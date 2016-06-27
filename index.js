@@ -4,7 +4,7 @@ var path = require('path');
 var _ = fis.util;
 
 module.exports = function(ret, pack, settings, opt) {
-
+  needSortByPackOrder = true;
   // 是否添加调试信息
   var useTrack = true;
   var useSourceMap = false;
@@ -151,6 +151,20 @@ module.exports = function(ret, pack, settings, opt) {
       var mathes = find(pattern);
       list = _[exclude ? 'difference' : 'union'](list, mathes);
     });
+
+    var originOrder = list.concat();
+
+    // 根据 packOrder 排序
+    needSortByPackOrder && (list = list.sort(function (a, b) {
+      var a1 = a.packOrder >> 0;
+      var b1 = b.packOrder >> 0;
+
+      if (a1 === b1) {
+        return originOrder.indexOf(a) - originOrder.indexOf(b);
+      }
+
+      return a1 - b1;
+    }));
 
     // sort by dependency
     var filtered = [];
